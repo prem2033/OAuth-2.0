@@ -1,0 +1,23 @@
+#%RAML 1.0
+title: Policy-OAuth-2.0-specification
+securitySchemes:
+  policy-oAuth: !include exchange_modules/ed2688aa-d238-4540-b7de-92dba24d9f28/oauth-2-0/1.0.1/oauth-2-0.raml
+traits:
+  client-id-enforcement:
+    headers:
+      client_id:
+        required: true
+        type: string
+      client_secret:
+        required: true
+        type: string
+/message:
+  get:
+    securedBy: [policy-oAuth]
+    is: client-id-enforcement
+    responses:
+      200:
+        body:
+          application/json:
+            example:
+    
