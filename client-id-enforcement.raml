@@ -1,0 +1,44 @@
+#%RAML 1.0
+title: system-assign-s3
+securitySchemes:
+  
+
+traits:
+  -client-id-required:
+    headers:
+      client_id:
+        type: string
+        required: true
+        description: client id provided by API Manager
+      client_secret:
+        type: string
+        required: true
+        description: client secret provided by API manager
+    responses:
+      400:
+        description: Unauthorized or invalid client application credentials
+      500:
+        description: Bad response from authorization server, or WSDL SOAP Fault error
+/system-assignment-s3:
+  post:
+    is:  -client-id-required  #adding traits 
+    description: get the message
+    body:
+      application/json:
+    responses:
+      200:
+        body:
+          application/json:
+            example:
+              {
+                 "code": "200 OK",
+                 "message": "uploaded successfully"
+              }
+      404:
+        body:
+          application/json:
+            example:
+              {
+                "code": "RESOURCE_NOT_FOUND",
+                "message": "Error trying to find resource"  
+              }
