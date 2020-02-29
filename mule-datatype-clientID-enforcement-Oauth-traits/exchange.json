@@ -1,0 +1,18 @@
+{
+  "main": "test.raml",
+  "name": "test",
+  "classifier": "raml",
+  "tags": [],
+  "dependencies": [
+    {
+      "groupId": "ed2688aa-d238-4540-b7de-92dba24d9f28",
+      "assetId": "transcation-id-for-test",
+      "version": "1.0.0"
+    },
+    {
+      "groupId": "ed2688aa-d238-4540-b7de-92dba24d9f28",
+      "assetId": "oauth-2-0",
+      "version": "1.0.0"
+    }
+  ]
+}

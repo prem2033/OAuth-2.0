@@ -1,0 +1,39 @@
+#%RAML 1.0
+title: test
+description: to add employees
+version: 1.0
+baseUri: https://anypoint.mulesoft.com/mocking/api/v1/links/2bff784c-1886-4938-a0fa-4bd1e2ff030f/emp-hr-sapi/v1 # baseUri: http://loaclhost:8081/emp-hr-sapi/v1
+securitySchemes:
+  oauth2-schema: !include /exchange_modules/ed2688aa-d238-4540-b7de-92dba24d9f28/oauth-2-0/1.0.0/oauth-2-0.raml 
+traits:
+  transcation-header: !include  /exchange_modules/ed2688aa-d238-4540-b7de-92dba24d9f28/transcation-id-for-test/1.0.0/transcation-id-for-test.raml
+uses:
+  emphrST: !include datatypes/emp-hr-sapi-type.raml
+securedBy: [oauth2-schema]  
+/create-employee:
+  post:
+    description: to add employee 
+    is: [transcation-header]
+    body:
+      application/json:
+        type: emphrST.createEmployeeRequest
+        example: !include examples/create-employee-request.json
+          
+    responses:
+      201:
+        body:
+          application/json:
+            type: emphrST.createemployeeResponseType
+            example: !include examples/create-employee-response.json
+      400:
+        body:
+          application/json:
+            type: emphrST.createBadRequest
+            example: !include examples/bad-request.json            
+      501:
+        body:
+          application/json:
+            type: emphrST.internalServerError
+            example: !include examples/internal-server-error.json
+              
+        

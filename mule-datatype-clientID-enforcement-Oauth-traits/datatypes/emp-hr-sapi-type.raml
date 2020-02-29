@@ -1,0 +1,76 @@
+#%RAML 1.0
+title: emp-hr-sapi-type
+usage: employee data type
+types:
+  createEmployeeRequest:
+    description: create employee request
+    type: object
+    properties:
+      empid:
+        description: employee id
+        type: integer
+        required: true
+        example: 8328
+      empname:
+        description: name of employee
+        type: string
+        example: "abcd"
+        required: false
+      empaddress:
+        description: address of employee
+        type: string
+        example: "banglore"
+        required: false
+  createemployeeResponseType:
+    description: response to employee
+    type: object
+    properties:
+      code:
+        description: http response type
+        type: integer
+        example: 2323
+      message:
+        description: employee created
+        type: string
+        example: "OK"
+      descriptions:
+        description: employee created description
+        type: string
+        example: "employee created"
+  createBadRequest:
+    type: object
+    description: details if bad request
+    properties:
+      code:
+        description: http response type for bad request
+        type: integer
+        example: 2323
+      message:
+        description: why bad request 
+        type: string
+        example: "OK"
+      descriptions:
+        description: http response bad details
+        type: string
+        example: "bad request"
+  internalServerError:
+    type: object
+    description: details if server error
+    properties:
+      code:
+        description: server code
+        type: integer
+        example: 2323
+      message:
+        description: why server error 
+        type: string
+        example: "OK"
+      descriptions:
+        description: http response bad details
+        type: string
+        example: "internal server error"
+
+      
+      
+      
+      
